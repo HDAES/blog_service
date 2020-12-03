@@ -1,0 +1,15 @@
+
+server:
+  port: 8001
+
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://106.14.178.146:3306/blog_database?characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: hades
+    password: 4HDP4e37DkMpTwdX
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
