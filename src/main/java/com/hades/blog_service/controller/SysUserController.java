@@ -1,7 +1,5 @@
 package com.hades.blog_service.controller;
 
-
-import com.hades.blog_service.entity.SysUser;
 import com.hades.blog_service.entity.vo.InsertUser;
 import com.hades.blog_service.entity.vo.UpdateUserModel;
 import com.hades.blog_service.service.impl.SysUserServiceImpl;
@@ -12,7 +10,6 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 /**
  * @author hades
