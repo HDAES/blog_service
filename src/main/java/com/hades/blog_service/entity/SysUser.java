@@ -1,9 +1,11 @@
 package com.hades.blog_service.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.util.Date;
-import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.io.Serializable;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -40,9 +42,15 @@ public class SysUser implements Serializable {
     @ApiModelProperty(value = "用户状态： 0：激活  1：未激活")
     private Integer status;
 
+    @TableLogic
+    @ApiModelProperty(value = "逻辑删除")
+    private Integer deleted;
+
+    @TableField(fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     @ApiModelProperty(value = "更新时间")
     private Date updateTime;
 
