@@ -78,4 +78,12 @@ public class R {
             return R.error().message("更新失败，未找到ID");
         }
     }
+
+    public static R booleanRespone(boolean bool){
+        if(bool){
+            return R.ok().message("删除成功");
+        }else {
+            return R.error().message("删除失败，未找到ID");
+        }
+    }
 }

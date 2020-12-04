@@ -30,6 +30,7 @@ public class SysUserController {
         return R.ok().data("list",userService.list());
     }
 
+
     @ApiOperation(value = "添加用户")
     @PostMapping("/addUser")
     public R addUser(@RequestBody InsertUser user){

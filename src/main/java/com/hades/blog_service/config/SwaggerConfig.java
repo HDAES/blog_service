@@ -26,6 +26,7 @@ public class SwaggerConfig {
     @Bean
     public Docket webApiConfig(){
         return new Docket(DocumentationType.SWAGGER_2)
+                .host("sb.xl686.com")
                 .groupName("webApi")
                 .apiInfo(webApiInfo())
                 .select()
@@ -39,7 +40,8 @@ public class SwaggerConfig {
                 .title("网站-博客系统API")
                 .description("本文档描述了微信小程序，网页，后台的api接口")
                 .version(VERSION)
-                .termsOfServiceUrl("http://atguigu.com")
+                .termsOfServiceUrl("http://sb.xl686.com/")
+                .licenseUrl("http://sb.xl686.com/")
                 .build();
     }
 }

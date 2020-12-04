@@ -2,6 +2,8 @@ package com.hades.blog_service.service;
 
 import com.hades.blog_service.entity.SysMenus;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.hades.blog_service.entity.vo.MenuQurey;
+import com.hades.blog_service.utils.R;
 
 /**
  * <p>
@@ -13,4 +15,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface SysMenusService extends IService<SysMenus> {
 
+    R addMenus(MenuQurey postBody);
+
+    R updataMenu(MenuQurey menu);
 }
