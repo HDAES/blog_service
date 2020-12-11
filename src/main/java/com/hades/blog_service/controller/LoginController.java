@@ -1,8 +1,10 @@
 package com.hades.blog_service.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.hades.blog_service.entity.SysMenus;
 import com.hades.blog_service.entity.SysUser;
 import com.hades.blog_service.entity.vo.LoginModel;
+import com.hades.blog_service.service.impl.SysMenusServiceImpl;
 import com.hades.blog_service.service.impl.SysUserServiceImpl;
 import com.hades.blog_service.utils.MD5;
 import com.hades.blog_service.utils.R;
@@ -10,10 +12,10 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -24,11 +26,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Api(tags = "登录模块")
+@CrossOrigin()
 @RequestMapping("/admin/login")
 public class LoginController {
 
     @Autowired
     SysUserServiceImpl userService;
+
+    @Autowired
+    SysMenusServiceImpl menusService;
 
     @ApiOperation(value = "登录")
     @PostMapping()
@@ -42,10 +48,14 @@ public class LoginController {
 
         QueryWrapper<SysUser> wrapper = new QueryWrapper<>();
         wrapper.eq("name",loginModel.getAccount());
-        wrapper.eq("pass_word", MD5.encrypt(loginModel.getPassWord()));
+        wrapper.eq("pass_word", loginModel.getPassWord());
         SysUser user = userService.getOne(wrapper);
         if(user!=null){
-            return R.ok().message("登录成功");
+            QueryWrapper<SysMenus> menusWrapper = new QueryWrapper<>();
+            menusWrapper.select("id","m_id","name","url","icon");
+            List<Map<String, Object>> maps = menusService.listMaps(menusWrapper);
+
+            return R.ok().message("登录成功").data("user",user).data("menus",maps);
         }else {
             return R.error().message("账号或者密码错误");
         }
