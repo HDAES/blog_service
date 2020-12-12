@@ -53,6 +53,7 @@ public class LoginController {
         if(user!=null){
             QueryWrapper<SysMenus> menusWrapper = new QueryWrapper<>();
             menusWrapper.select("id","m_id","name","url","icon");
+            menusWrapper.orderByAsc("sort");
             List<Map<String, Object>> maps = menusService.listMaps(menusWrapper);
 
             return R.ok().message("登录成功").data("user",user).data("menus",maps);

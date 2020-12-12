@@ -41,6 +41,9 @@ public class SysMenus implements Serializable {
     @ApiModelProperty(value = "菜单Icon")
     private String icon;
 
+    @ApiModelProperty(value = "菜单排序")
+    private Integer sort;
+
     @ApiModelProperty(value = "菜单状态")
     private Integer status;
 
