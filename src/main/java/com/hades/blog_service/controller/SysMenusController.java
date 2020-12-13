@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -23,6 +24,7 @@ import java.util.List;
  * @since 2020-12-03
  */
 @RestController
+@CrossOrigin()
 @Api(tags = "菜单管理")
 @RequestMapping("/admin/menu")
 public class SysMenusController {
@@ -40,8 +42,8 @@ public class SysMenusController {
     @ApiOperation(value = "添加菜单")
     @PostMapping("/add")
     public R addMenus(@RequestBody MenuQurey postBody){
-        menusService.addMenus(postBody);
-        return R.ok();
+       return menusService.addMenus(postBody);
+
     }
 
     @ApiOperation(value = "查询一级菜单")
@@ -56,11 +58,22 @@ public class SysMenusController {
     @ApiOperation(value = "删除菜单")
     @GetMapping("/delMenu/{id}")
     public R delMenu(@ApiParam(name = "id", value = "菜单ID") @PathVariable Long id ){
+        System.out.println(id);
         if(id==null){
             return R.error().message("请输入ID");
         }else {
             boolean flag = menusService.removeById(id);
-            return flag? R.ok().message("删除成功"):R.error().message("删除失败");
+
+            if(flag){
+                QueryWrapper<SysMenus> menusWrapper = new QueryWrapper<>();
+                menusWrapper.select("id","m_id","name","url","icon","sort");
+                menusWrapper.orderByAsc("sort");
+                List<Map<String, Object>> maps = menusService.listMaps(menusWrapper);
+                return R.ok().message("删除成功").data("list",maps);
+            }else{
+                return R.error().message("删除失败");
+            }
+
         }
     }
 

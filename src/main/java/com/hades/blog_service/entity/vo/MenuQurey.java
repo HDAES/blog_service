@@ -28,4 +28,7 @@ public class MenuQurey {
 
     @ApiModelProperty(value = "菜单状态")
     private Integer status;
+
+    @ApiModelProperty(value = "菜单排序")
+    private Integer sort;
 }

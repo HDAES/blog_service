@@ -52,7 +52,7 @@ public class LoginController {
         SysUser user = userService.getOne(wrapper);
         if(user!=null){
             QueryWrapper<SysMenus> menusWrapper = new QueryWrapper<>();
-            menusWrapper.select("id","m_id","name","url","icon");
+            menusWrapper.select("id","m_id","name","url","icon","sort");
             menusWrapper.orderByAsc("sort");
             List<Map<String, Object>> maps = menusService.listMaps(menusWrapper);
 

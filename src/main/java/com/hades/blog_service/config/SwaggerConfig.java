@@ -26,7 +26,7 @@ public class SwaggerConfig {
     @Bean
     public Docket webApiConfig(){
         return new Docket(DocumentationType.SWAGGER_2)
-                .host("sb.xl686.com")
+//                .host("sb.xl686.com")
                 .groupName("webApi")
                 .apiInfo(webApiInfo())
                 .select()
