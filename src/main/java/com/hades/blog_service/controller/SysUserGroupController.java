@@ -23,6 +23,7 @@ import java.util.List;
  * @since 2020-12-04
  */
 @RestController
+@CrossOrigin()
 @Api(tags = "用户组管理")
 @RequestMapping("/admin/usergroup")
 public class SysUserGroupController {
