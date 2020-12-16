@@ -6,6 +6,8 @@ import com.hades.blog_service.entity.vo.InsertUser;
 import com.hades.blog_service.entity.vo.UpdateUserModel;
 import com.hades.blog_service.utils.R;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -19,4 +21,6 @@ public interface SysUserService extends IService<SysUser> {
     R updateUser(UpdateUserModel user);
 
     R insertUser(InsertUser user);
+
+    void listJoinGroup();
 }

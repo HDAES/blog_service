@@ -11,6 +11,7 @@ import com.hades.blog_service.utils.R;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -58,5 +59,10 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         sUser.setType(user.getType());
         int i = userMapper.insert(sUser);
         return R.intRespone(i);
+    }
+
+    @Override
+    public void listJoinGroup() {
+        userMapper.selectUserList();
     }
 }

@@ -56,6 +56,7 @@ public class LoginController {
             menusWrapper.orderByAsc("sort");
             List<Map<String, Object>> maps = menusService.listMaps(menusWrapper);
 
+            //获取用户组 
             return R.ok().message("登录成功").data("user",user).data("menus",maps);
         }else {
             return R.error().message("账号或者密码错误");

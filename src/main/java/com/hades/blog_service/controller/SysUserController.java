@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
  * description 用户控制
  */
 @RestController
+@CrossOrigin()
 @Api(tags = "用户管理")
 @RequestMapping("/admin/user")
 public class SysUserController {
@@ -27,7 +28,8 @@ public class SysUserController {
     @ApiOperation(value = "查询用户数据")
     @GetMapping("/getUserList")
     public R getUserList(){
-        return R.ok().data("list",userService.list());
+        userService.listJoinGroup();
+        return R.ok();
     }
 
 
