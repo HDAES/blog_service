@@ -63,6 +63,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     @Override
     public void listJoinGroup() {
-        userMapper.selectUserList();
+        System.out.println(userMapper.selectUserList());
+
     }
 }

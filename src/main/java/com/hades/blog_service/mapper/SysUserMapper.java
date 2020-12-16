@@ -4,8 +4,7 @@ import com.hades.blog_service.entity.SysUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
-import java.util.Map;
-
+import java.util.List;
 /**
  * <p>
  *  Mapper 接口
@@ -17,5 +16,5 @@ import java.util.Map;
 @Mapper
 public interface SysUserMapper extends BaseMapper<SysUser> {
 
-    Map<String,Object> selectUserList();
+    List<SysUser> selectUserList();
 }
