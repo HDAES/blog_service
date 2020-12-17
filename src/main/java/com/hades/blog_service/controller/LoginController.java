@@ -51,7 +51,7 @@ public class LoginController {
             return R.ok().message("密码不能为空");
         }
 
-        SysUser user = userService.userJoinGroup(loginModel.getAccount(),loginModel.getPassWord());
+        SysUser user = userService.userJoinGroup(loginModel.getAccount(),MD5.encrypt(loginModel.getPassWord()));
 
         if(user!=null){
             QueryWrapper<SysMenus> menusWrapper = new QueryWrapper<>();

@@ -33,6 +33,9 @@ public class SysUser implements Serializable {
     @ApiModelProperty(value = "用户名")
     private String name;
 
+    @ApiModelProperty(value = "用户名")
+    private String account;
+
     @ApiModelProperty(value = "用户密码")
     private String passWord;
 
@@ -60,4 +63,6 @@ public class SysUser implements Serializable {
     @ApiModelProperty(value = "用户组权限菜单")
     private String menus;
 
+    @ApiModelProperty(value = "用户组权限菜单")
+    private String groupId;
 }

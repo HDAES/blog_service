@@ -22,8 +22,8 @@
             sys_user
             JOIN sys_user_group ON sys_user.group_id = sys_user_group.id
             AND sys_user.deleted = 0
-            AND sys_user.name = #{account}
-            AND sys_user.pass_word = ${psw}
+            AND sys_user.account = #{account}
+            AND sys_user.pass_word = #{psw}
     </select>
 
 </mapper>

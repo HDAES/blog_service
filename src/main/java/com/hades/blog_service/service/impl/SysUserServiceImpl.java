@@ -47,16 +47,17 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     @Override
     public R insertUser(InsertUser user) {
         SysUser sUser = new SysUser();
-        if(user.getName()==null){
+        if(user.getAccount()==null){
             return R.error().message("用户名不能为空");
         }
         if(user.getPassWord() == null){
             return R.error().message("用户密码不能为空");
         }
         sUser.setPassWord(MD5.encrypt(user.getPassWord()));
+        sUser.setAccount(user.getAccount());
         sUser.setName(user.getName());
-        sUser.setStatus(user.getStatus());
-        sUser.setType(user.getType());
+        sUser.setGroupId(user.getGroupId());
+
         int i = userMapper.insert(sUser);
         return R.intRespone(i);
     }
