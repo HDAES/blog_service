@@ -3,8 +3,10 @@ package com.hades.blog_service.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hades.blog_service.entity.SysMenus;
 import com.hades.blog_service.entity.SysUser;
+import com.hades.blog_service.entity.SysUserGroup;
 import com.hades.blog_service.entity.vo.LoginModel;
 import com.hades.blog_service.service.impl.SysMenusServiceImpl;
+import com.hades.blog_service.service.impl.SysUserGroupServiceImpl;
 import com.hades.blog_service.service.impl.SysUserServiceImpl;
 import com.hades.blog_service.utils.MD5;
 import com.hades.blog_service.utils.R;
@@ -36,6 +38,9 @@ public class LoginController {
     @Autowired
     SysMenusServiceImpl menusService;
 
+    @Autowired
+    SysUserGroupServiceImpl userGroupService;
+
     @ApiOperation(value = "登录")
     @PostMapping()
     public R login(@RequestBody LoginModel loginModel){
@@ -46,18 +51,21 @@ public class LoginController {
             return R.ok().message("密码不能为空");
         }
 
-        QueryWrapper<SysUser> wrapper = new QueryWrapper<>();
-        wrapper.eq("name",loginModel.getAccount());
-        wrapper.eq("pass_word", loginModel.getPassWord());
-        SysUser user = userService.getOne(wrapper);
+        SysUser user = userService.userJoinGroup(loginModel.getAccount(),loginModel.getPassWord());
+
         if(user!=null){
             QueryWrapper<SysMenus> menusWrapper = new QueryWrapper<>();
             menusWrapper.select("id","m_id","name","url","icon","sort");
             menusWrapper.orderByAsc("sort");
             List<Map<String, Object>> maps = menusService.listMaps(menusWrapper);
 
+            QueryWrapper<SysUserGroup> userGroupWrapper = new QueryWrapper<>();
+            userGroupWrapper.select("id","g_name");
+
+            List<SysUserGroup> groups = userGroupService.list(userGroupWrapper);
+
             //获取用户组 
-            return R.ok().message("登录成功").data("user",user).data("menus",maps);
+            return R.ok().message("登录成功").data("user",user).data("menus",maps).data("groups",groups);
         }else {
             return R.error().message("账号或者密码错误");
         }

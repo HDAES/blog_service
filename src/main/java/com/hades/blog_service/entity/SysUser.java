@@ -54,5 +54,10 @@ public class SysUser implements Serializable {
     @ApiModelProperty(value = "更新时间")
     private Date updateTime;
 
+    @ApiModelProperty(value = "用户组名字")
+    private String gName;
+
+    @ApiModelProperty(value = "用户组权限菜单")
+    private String menus;
 
 }

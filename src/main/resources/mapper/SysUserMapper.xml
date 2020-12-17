@@ -3,7 +3,27 @@
 <mapper namespace="com.hades.blog_service.mapper.SysUserMapper">
 
     <select id="selectUserList" resultType="com.hades.blog_service.entity.SysUser">
-        SELECT * FROM sys_user
+        SELECT
+            sys_user.*,
+            sys_user_group.menus,
+            sys_user_group.g_name
+        FROM
+            sys_user
+            JOIN sys_user_group ON sys_user.group_id = sys_user_group.id
+            AND sys_user.deleted = 0
+    </select>
+
+    <select id="userMapper" resultType="com.hades.blog_service.entity.SysUser">
+        SELECT
+            sys_user.*,
+            sys_user_group.menus,
+            sys_user_group.g_name
+        FROM
+            sys_user
+            JOIN sys_user_group ON sys_user.group_id = sys_user_group.id
+            AND sys_user.deleted = 0
+            AND sys_user.name = #{account}
+            AND sys_user.pass_word = ${psw}
     </select>
 
 </mapper>

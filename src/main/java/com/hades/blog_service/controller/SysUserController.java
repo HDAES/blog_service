@@ -28,8 +28,8 @@ public class SysUserController {
     @ApiOperation(value = "查询用户数据")
     @GetMapping("/getUserList")
     public R getUserList(){
-        userService.listJoinGroup();
-        return R.ok();
+
+        return R.ok().data("list",userService.listJoinGroup());
     }
 
 

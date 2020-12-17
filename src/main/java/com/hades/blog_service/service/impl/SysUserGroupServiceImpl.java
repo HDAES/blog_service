@@ -34,7 +34,7 @@ public class SysUserGroupServiceImpl extends ServiceImpl<SysUserGroupMapper, Sys
     @Override
     public R addGroup(GroupQurey userGroup) {
         SysUserGroup group = new SysUserGroup();
-        group.setName(userGroup.getName());
+        group.setGName(userGroup.getName());
         StringBuilder menus = new StringBuilder();
         for (int i =0;i<userGroup.getMenus().size();i++){
             menus.append(userGroup.getMenus().get(i)+',');
@@ -60,7 +60,7 @@ public class SysUserGroupServiceImpl extends ServiceImpl<SysUserGroupMapper, Sys
         menus.deleteCharAt(menus.length()-1);
         group.setMenus(menus.toString());
 
-        group.setName(userGroup.getName());
+        group.setGName(userGroup.getName());
 
         int i = userGroupMapper.updateById(group);
         return R.intRespone(i);
@@ -74,6 +74,6 @@ public class SysUserGroupServiceImpl extends ServiceImpl<SysUserGroupMapper, Sys
         String[] menusArray = null;
         menusArray = group.getMenus().split(",");
         List<SysMenus> sysMenus = menusMapper.selectBatchIds(Arrays.asList(menusArray));
-        return R.ok().data("list",sysMenus).data("name",group.getName()).data("id",group.getId());
+        return R.ok().data("list",sysMenus).data("name",group.getGName()).data("id",group.getId());
     }
 }

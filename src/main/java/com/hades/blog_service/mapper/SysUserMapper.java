@@ -3,6 +3,7 @@ package com.hades.blog_service.mapper;
 import com.hades.blog_service.entity.SysUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 /**
@@ -17,4 +18,6 @@ import java.util.List;
 public interface SysUserMapper extends BaseMapper<SysUser> {
 
     List<SysUser> selectUserList();
+
+    SysUser userMapper( @Param("account") String account,@Param("psw") String psw);
 }

@@ -22,5 +22,5 @@ public interface SysUserService extends IService<SysUser> {
 
     R insertUser(InsertUser user);
 
-    void listJoinGroup();
+    List listJoinGroup();
 }

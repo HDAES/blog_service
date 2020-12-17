@@ -32,7 +32,7 @@ public class SysUserGroup implements Serializable {
     private String id;
 
     @ApiModelProperty(value = "用户组名字")
-    private String name;
+    private String gName;
 
     @ApiModelProperty(value = "用户组权限菜单")
     private String menus;
