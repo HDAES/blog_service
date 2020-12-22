@@ -1,18 +1,18 @@
-package com.hades.blog_service.service.impl;
+package com.hades.blog_service.utils;
 
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
-import com.hades.blog_service.service.OssService;
-import com.hades.blog_service.utils.ConstantPropertiesUtils;
-import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
+/**
+ * @Author HADES
+ * @Create 2020/12/22 11:08
+ * description
+ */
+public class UploadFileOss {
 
-@Service
-public class OssServiceImpl implements OssService {
-    @Override
-    public String uploadFileAvatar(MultipartFile file) {
+    public static String uploadFileAvatar(MultipartFile file) {
 
         // Endpoint以杭州为例，其它Region请按实际情况填写。
         String endpoint = ConstantPropertiesUtils.END_POIND;

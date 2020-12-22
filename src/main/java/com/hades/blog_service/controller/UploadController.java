@@ -1,10 +1,9 @@
 package com.hades.blog_service.controller;
 
-
-import com.hades.blog_service.service.OssService;
 import com.hades.blog_service.utils.R;
+import com.hades.blog_service.utils.UploadFileOss;
 import io.swagger.annotations.Api;
-import org.springframework.beans.factory.annotation.Autowired;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,14 +14,14 @@ import org.springframework.web.multipart.MultipartFile;
 @CrossOrigin
 @Api(tags = "上传文件")
 @RequestMapping("/upload")
-public class uploadController {
+public class UploadController {
 
-    @Autowired
-    private OssService ossService;
 
+
+    @ApiOperation(value = "oss上传文件")
     @PostMapping("oss")
     public R uploadOss(MultipartFile file){
-        String url = ossService.uploadFileAvatar(file);
+        String url = UploadFileOss.uploadFileAvatar(file);
         return R.ok().data("url",url);
     }
 
