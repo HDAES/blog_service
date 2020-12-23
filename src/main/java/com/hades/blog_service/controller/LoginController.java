@@ -42,7 +42,7 @@ public class LoginController {
     SysUserGroupServiceImpl userGroupService;
 
     @ApiOperation(value = "登录")
-    @PostMapping()
+    @PostMapping
     public R login(@RequestBody LoginModel loginModel){
         if(loginModel.getAccount()==null){
             return R.ok().message("账号不能为空");
