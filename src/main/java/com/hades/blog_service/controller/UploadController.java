@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @Api(tags = "上传文件")
+@CrossOrigin()
 @RequestMapping("/upload")
 public class UploadController {
     @ApiOperation(value = "oss上传文件")
