@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hades.blog_service.mapper.SysBlogTagsMapper">
+
+    <select id="selectTagsList" resultType="com.hades.blog_service.entity.SysBlogTags">
+        SELECT
+            sys_blog_tags.*,
+            sys_blog_sort.name
+        FROM
+            sys_blog_tags
+            JOIN sys_blog_sort ON sys_blog_tags.s_id = sys_blog_sort.id
+            AND sys_blog_tags.deleted = 0
+    </select>
+
+</mapper>

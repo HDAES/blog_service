@@ -17,4 +17,5 @@ public interface SysBlogSortService extends IService<SysBlogSort> {
     R addSort(SysBlogSort blogSort);
 
     R updateSort(SysBlogSort blogSort);
+
 }

@@ -1,5 +1,6 @@
 package com.hades.blog_service.service.impl;
 
+import com.hades.blog_service.entity.SysBlogSort;
 import com.hades.blog_service.entity.SysBlogTags;
 import com.hades.blog_service.mapper.SysBlogSortMapper;
 import com.hades.blog_service.mapper.SysBlogTagsMapper;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -44,8 +46,14 @@ public class SysBlogTagsServiceImpl extends ServiceImpl<SysBlogTagsMapper, SysBl
         blogTags.setSId(tags.getSId());
         blogTags.setTName(tags.getTName());
         blogTags.setTIcon(tags.getTIcon());
-        blogTags.setSId(tags.getId());
+        blogTags.setId(tags.getId());
         int i = sysBlogTagsMapper.updateById(blogTags);
         return R.intRespone(i);
+    }
+
+    @Override
+    public R selectTagsList() {
+        List<SysBlogTags> sysBlogTags = sysBlogTagsMapper.selectTagsList();
+        return R.ok().data("list",sysBlogTags);
     }
 }

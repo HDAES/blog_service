@@ -32,6 +32,9 @@ public class SysBlogTags implements Serializable {
     @ApiModelProperty(value = "分类ID")
     private String sId;
 
+    @ApiModelProperty(value = "分类名字")
+    private String name;
+
     @ApiModelProperty(value = "标签名字")
     private String tName;
 

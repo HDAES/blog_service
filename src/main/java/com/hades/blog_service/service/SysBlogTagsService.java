@@ -13,8 +13,9 @@ import com.hades.blog_service.utils.R;
  * @since 2021-01-05
  */
 public interface SysBlogTagsService extends IService<SysBlogTags> {
-
     R addTags(SysBlogTags tags);
 
     R updateTags(SysBlogTags tags);
+
+    R selectTagsList();
 }

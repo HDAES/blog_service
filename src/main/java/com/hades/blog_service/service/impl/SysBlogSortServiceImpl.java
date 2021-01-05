@@ -8,6 +8,7 @@ import com.hades.blog_service.utils.R;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -46,8 +47,7 @@ public class SysBlogSortServiceImpl extends ServiceImpl<SysBlogSortMapper, SysBl
             sort.setName(blogSort.getName());
             int update = sysBlogSortMapper.updateById(sort);
             return R.intRespone(update);
-
         }
-
     }
+
 }
