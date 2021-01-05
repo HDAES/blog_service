@@ -35,12 +35,13 @@ public class SysBlogSortServiceImpl extends ServiceImpl<SysBlogSortMapper, SysBl
 
     @Override
     public R updateSort(SysBlogSort blogSort) {
-        if(blogSort.getId().isEmpty()){
+        if(blogSort.getId()==null){
             return R.error().message("ID不能为空");
         }else {
             SysBlogSort sort = new SysBlogSort();
             sort.setId(blogSort.getId());
             sort.setType(blogSort.getType());
+            sort.setIcon(blogSort.getIcon());
             sort.setImage(blogSort.getImage());
             sort.setName(blogSort.getName());
             int update = sysBlogSortMapper.updateById(sort);
