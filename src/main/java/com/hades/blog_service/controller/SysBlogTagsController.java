@@ -32,7 +32,6 @@ public class SysBlogTagsController {
     @ApiOperation(value = "获取所有分类")
     @GetMapping("tags")
     public R sort(){
-
         return blogTagsService.selectTagsList();
     }
 
