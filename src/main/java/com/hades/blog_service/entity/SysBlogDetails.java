@@ -34,8 +34,14 @@ public class SysBlogDetails implements Serializable {
     @ApiModelProperty(value = "分类ID")
     private String sId;
 
+    @ApiModelProperty(value = "分类名字")
+    private String name;
+
     @ApiModelProperty(value = "标签ID")
     private String tId;
+
+    @ApiModelProperty(value = "标签名字")
+    private String tName;
 
     @ApiModelProperty(value = "博客标题")
     private String title;
@@ -49,11 +55,11 @@ public class SysBlogDetails implements Serializable {
     @ApiModelProperty(value = "来源 0: 原创  1:转载")
     private Integer source;
 
-    @ApiModelProperty(value = "0: pc 1:微信小程序 2：pc和小程序")
+    @ApiModelProperty(value = "0: pc和小程序 1:微信小程序 2：pc")
     private Integer type;
 
     @ApiModelProperty(value = "排序")
-    private Integer order;
+    private Integer orderIn;
 
     @TableField(fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建时间")

@@ -29,4 +29,13 @@ public class SysBlogDetailsServiceImpl extends ServiceImpl<SysBlogDetailsMapper,
         List<SysBlogDetails> sysBlogDetails = blogDetailsMapper.selectDetails();
         return R.ok().data("list",sysBlogDetails);
     }
+
+    @Override
+    public R addDetails(SysBlogDetails details) {
+
+        int insert = blogDetailsMapper.insert(details);
+
+        return R.intRespone(insert);
+    }
+
 }

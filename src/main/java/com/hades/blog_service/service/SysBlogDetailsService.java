@@ -15,4 +15,6 @@ import com.hades.blog_service.utils.R;
 public interface SysBlogDetailsService extends IService<SysBlogDetails> {
 
     R selectDetails();
+
+    R addDetails(SysBlogDetails details);
 }

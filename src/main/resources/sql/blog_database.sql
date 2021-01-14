@@ -3,15 +3,15 @@
 
  Source Server         : localhost_3306
  Source Server Type    : MySQL
- Source Server Version : 80021
+ Source Server Version : 50724
  Source Host           : localhost:3306
  Source Schema         : blog_database
 
  Target Server Type    : MySQL
- Target Server Version : 80021
+ Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 07/01/2021 18:30:58
+ Date: 14/01/2021 23:48:04
 */
 
 SET NAMES utf8mb4;
@@ -28,13 +28,19 @@ CREATE TABLE `sys_blog_details`  (
   `title` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '博客标题',
   `des` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '博客描述',
   `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '博客图片',
-  `source` int(0) NULL DEFAULT 0 COMMENT '来源 0: 原创  1:转载',
-  `type` int(0) NULL DEFAULT 2 COMMENT '0: pc 1:微信小程序 2：pc和小程序',
-  `order` int(0) NULL DEFAULT NULL COMMENT '排序',
+  `source` int(11) NULL DEFAULT 0 COMMENT '来源 0: 原创  1:转载',
+  `type` int(11) NULL DEFAULT 2 COMMENT '0: pc和小程序 1:微信小程序 2：pc',
+  `order_in` int(11) NULL DEFAULT 0 COMMENT '排序',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_blog_details
+-- ----------------------------
+INSERT INTO `sys_blog_details` VALUES ('1349724745470300162', '1346353547930595330', '1346657358586925057', '123', '1234', 'https://hades0512.oss-cn-beijing.aliyuncs.com/u=2683446143,1677008272&fm=26&gp=0.jpg', 1, 0, 0, '2021-01-14 22:27:11', '2021-01-14 22:27:11');
+INSERT INTO `sys_blog_details` VALUES ('1349732135590666241', '1346353547930595330', '1346657358586925057', 'react', 'desdesdesdesdes', 'https://hades0512.oss-cn-beijing.aliyuncs.com/u=2683446143,1677008272&fm=26&gp=0.jpg', 0, 0, 0, '2021-01-14 22:56:33', '2021-01-14 22:56:33');
 
 -- ----------------------------
 -- Table structure for sys_blog_sort
@@ -45,8 +51,8 @@ CREATE TABLE `sys_blog_sort`  (
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '名字',
   `icon` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图标',
   `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图片',
-  `type` int(0) NULL DEFAULT 0 COMMENT '0: pc 1:微信小程序 3：pc和小程序',
-  `deleted` int(0) NULL DEFAULT 0 COMMENT '删除状态',
+  `type` int(11) NULL DEFAULT 0 COMMENT '0: pc和小程序 1:微信小程序 2：pc',
+  `deleted` int(11) NULL DEFAULT 0 COMMENT '删除状态',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
@@ -68,7 +74,7 @@ CREATE TABLE `sys_blog_tags`  (
   `s_id` char(19) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '分类ID',
   `t_name` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '标签名字',
   `t_icon` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '标签图标',
-  `deleted` int(0) NULL DEFAULT 0 COMMENT '删除状态',
+  `deleted` int(11) NULL DEFAULT 0 COMMENT '删除状态',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
@@ -89,9 +95,9 @@ CREATE TABLE `sys_menus`  (
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '菜单名字',
   `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '菜单地址',
   `icon` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '菜单Icon',
-  `sort` int(0) NULL DEFAULT 0 COMMENT '菜单排序',
-  `status` int(0) NULL DEFAULT 0 COMMENT '菜单状态',
-  `deleted` int(0) NULL DEFAULT 0 COMMENT '逻辑删除',
+  `sort` int(11) NULL DEFAULT 0 COMMENT '菜单排序',
+  `status` int(11) NULL DEFAULT 0 COMMENT '菜单状态',
+  `deleted` int(11) NULL DEFAULT 0 COMMENT '逻辑删除',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE
@@ -142,10 +148,10 @@ CREATE TABLE `sys_user`  (
   `name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户名',
   `account` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '账号',
   `pass_word` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户密码',
-  `type` int(0) UNSIGNED NULL DEFAULT 5 COMMENT '用户类型：0(default): 超级管理员 1：管理员  5：游客',
+  `type` int(10) UNSIGNED NULL DEFAULT 5 COMMENT '用户类型：0(default): 超级管理员 1：管理员  5：游客',
   `group_id` varchar(19) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户组ID',
-  `status` int(0) NULL DEFAULT 0 COMMENT '用户状态： 0：激活  1：未激活',
-  `deleted` int(0) NULL DEFAULT 0 COMMENT '逻辑删除',
+  `status` int(11) NULL DEFAULT 0 COMMENT '用户状态： 0：激活  1：未激活',
+  `deleted` int(11) NULL DEFAULT 0 COMMENT '逻辑删除',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE

@@ -1,6 +1,7 @@
 package com.hades.blog_service.controller;
 
 
+import com.hades.blog_service.entity.SysBlogDetails;
 import com.hades.blog_service.service.impl.SysBlogDetailsServiceImpl;
 import com.hades.blog_service.utils.R;
 import io.swagger.annotations.Api;
@@ -32,8 +33,9 @@ public class SysBlogDetailsController {
 
     @ApiOperation(value = "添加博客详情")
     @PostMapping("/details")
-    public R addDetails(){
-        return R.ok();
+    public R addDetails(@RequestBody SysBlogDetails details){
+
+        return blogDetailsService.addDetails(details);
     }
 
 }
