@@ -6,6 +6,7 @@ import com.hades.blog_service.service.impl.SysBlogDetailsServiceImpl;
 import com.hades.blog_service.utils.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,8 +35,23 @@ public class SysBlogDetailsController {
     @ApiOperation(value = "添加博客详情")
     @PostMapping("/details")
     public R addDetails(@RequestBody SysBlogDetails details){
-
         return blogDetailsService.addDetails(details);
+    }
+
+    @ApiOperation(value = "修改详情")
+    @PutMapping("/details")
+    public R updateDetails(@RequestBody SysBlogDetails details){
+        return blogDetailsService.updateDetails(details);
+    }
+
+    @ApiOperation(value = "删除详情")
+    @DeleteMapping("/details/{id}")
+    public R delDetails(@ApiParam(name = "id", value = "详情ID") @PathVariable Long id ){
+        if(id==null){
+            return R.error().message("请输入ID");
+        }
+        boolean flag = blogDetailsService.removeById(id);
+        return  R.booleanRespone(flag);
     }
 
 }

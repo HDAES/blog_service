@@ -17,4 +17,6 @@ public interface SysBlogDetailsService extends IService<SysBlogDetails> {
     R selectDetails();
 
     R addDetails(SysBlogDetails details);
+
+    R updateDetails(SysBlogDetails details);
 }

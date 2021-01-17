@@ -32,10 +32,17 @@ public class SysBlogDetailsServiceImpl extends ServiceImpl<SysBlogDetailsMapper,
 
     @Override
     public R addDetails(SysBlogDetails details) {
-
         int insert = blogDetailsMapper.insert(details);
-
         return R.intRespone(insert);
+    }
+
+    @Override
+    public R updateDetails(SysBlogDetails details) {
+        if(details.getId()==null){
+            return  R.error().message("id不能为空");
+        }
+        int i = blogDetailsMapper.updateById(details);
+        return R.intRespone(i);
     }
 
 }

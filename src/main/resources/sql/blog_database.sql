@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 14/01/2021 23:48:04
+ Date: 17/01/2021 23:08:36
 */
 
 SET NAMES utf8mb4;
@@ -40,7 +40,6 @@ CREATE TABLE `sys_blog_details`  (
 -- Records of sys_blog_details
 -- ----------------------------
 INSERT INTO `sys_blog_details` VALUES ('1349724745470300162', '1346353547930595330', '1346657358586925057', '123', '1234', 'https://hades0512.oss-cn-beijing.aliyuncs.com/u=2683446143,1677008272&fm=26&gp=0.jpg', 1, 0, 0, '2021-01-14 22:27:11', '2021-01-14 22:27:11');
-INSERT INTO `sys_blog_details` VALUES ('1349732135590666241', '1346353547930595330', '1346657358586925057', 'react', 'desdesdesdesdes', 'https://hades0512.oss-cn-beijing.aliyuncs.com/u=2683446143,1677008272&fm=26&gp=0.jpg', 0, 0, 0, '2021-01-14 22:56:33', '2021-01-14 22:56:33');
 
 -- ----------------------------
 -- Table structure for sys_blog_sort
@@ -64,6 +63,7 @@ INSERT INTO `sys_blog_sort` VALUES ('1346289147920072706', '123', '12312', 'http
 INSERT INTO `sys_blog_sort` VALUES ('1346337337323126786', 'JavaScript', 'nihao', 'https://hades0512.oss-cn-beijing.aliyuncs.com/1583836605249.jpg', 0, 1);
 INSERT INTO `sys_blog_sort` VALUES ('1346339473540874241', '1321', '1233', 'https://hades0512.oss-cn-beijing.aliyuncs.com/1583836605249.jpg', 0, 1);
 INSERT INTO `sys_blog_sort` VALUES ('1346353547930595330', 'JavaScript', 'xxxxxxxxxxxx', 'https://hades0512.oss-cn-beijing.aliyuncs.com/1583836605249.jpg', 0, 0);
+INSERT INTO `sys_blog_sort` VALUES ('1350727272017825794', 'Flutter', 'flutter', 'https://hades0512.oss-cn-beijing.aliyuncs.com/src=http___b-ssl.duitang.com_uploads_item_201805_15_20180515163422_2mACE.thumb.700_0.jpeg&refer=http___b-ssl.duitang.jpg', 0, 0);
 
 -- ----------------------------
 -- Table structure for sys_blog_tags
@@ -84,6 +84,7 @@ CREATE TABLE `sys_blog_tags`  (
 INSERT INTO `sys_blog_tags` VALUES ('1346385377467678722', '1346353547930595330', 'Vue', 'vue', 1);
 INSERT INTO `sys_blog_tags` VALUES ('1346393316765016065', '1346353547930595330', 'React', 'react', 1);
 INSERT INTO `sys_blog_tags` VALUES ('1346657358586925057', '1346353547930595330', 'React', 'react', 0);
+INSERT INTO `sys_blog_tags` VALUES ('1350713703477940225', '1346353547930595330', 'Vue', 'vue', 0);
 
 -- ----------------------------
 -- Table structure for sys_menus
