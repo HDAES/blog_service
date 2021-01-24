@@ -81,9 +81,9 @@ public class R {
 
     public static R booleanRespone(boolean bool){
         if(bool){
-            return R.ok().message("删除成功");
+            return R.ok().message("操作成功");
         }else {
-            return R.error().message("删除失败，未找到ID");
+            return R.error().message("操作失败，未找到ID");
         }
     }
 }
