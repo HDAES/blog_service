@@ -54,6 +54,6 @@ public class SysBlogTagsServiceImpl extends ServiceImpl<SysBlogTagsMapper, SysBl
     @Override
     public R selectTagsList() {
         List<SysBlogTags> sysBlogTags = sysBlogTagsMapper.selectTagsList();
-        return R.ok().data("list",sysBlogTags);
+        return R.ok().data(sysBlogTags);
     }
 }

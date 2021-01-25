@@ -36,7 +36,7 @@ public class SysMenusController {
     @GetMapping()
     public R getMenus(){
         List<SysMenus> list = menusService.list(null);
-        return R.ok().data("list",list);
+        return R.ok().data(list);
     }
 
     @ApiOperation(value = "添加菜单")
@@ -52,7 +52,7 @@ public class SysMenusController {
         QueryWrapper<SysMenus> wrapper = new QueryWrapper<>();
         wrapper.eq("m_id","0");
         List<SysMenus> list = menusService.list(wrapper);
-        return R.ok().data("list",list);
+        return R.ok().data(list);
     }
 
     @ApiOperation(value = "删除菜单")
@@ -69,7 +69,7 @@ public class SysMenusController {
                 menusWrapper.select("id","m_id","name","url","icon","sort");
                 menusWrapper.orderByAsc("sort");
                 List<Map<String, Object>> maps = menusService.listMaps(menusWrapper);
-                return R.ok().message("删除成功").data("list",maps);
+                return R.ok().message("删除成功").data(maps);
             }else{
                 return R.error().message("删除失败");
             }

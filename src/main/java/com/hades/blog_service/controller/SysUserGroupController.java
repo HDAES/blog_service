@@ -34,7 +34,7 @@ public class SysUserGroupController {
     @GetMapping()
     public R getGroup(){
         List<SysUserGroup> list = userGroupService.list();
-        return R.ok().data("list",list);
+        return R.ok().data(list);
     }
 
     @ApiOperation(value = "添加用户组")

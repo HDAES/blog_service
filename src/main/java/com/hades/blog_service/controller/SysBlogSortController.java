@@ -32,7 +32,7 @@ public class SysBlogSortController {
     @GetMapping("sort")
     public R sort(){
         List<SysBlogSort> list = sysBlogSortService.list();
-        return R.ok().data("list",list);
+        return R.ok().data(list);
     }
 
     @ApiOperation(value = "添加分类")

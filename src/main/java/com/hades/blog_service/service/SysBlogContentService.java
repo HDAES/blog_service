@@ -2,6 +2,7 @@ package com.hades.blog_service.service;
 
 import com.hades.blog_service.entity.SysBlogContent;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.hades.blog_service.utils.R;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface SysBlogContentService extends IService<SysBlogContent> {
 
+    R updateContent(SysBlogContent content);
 }

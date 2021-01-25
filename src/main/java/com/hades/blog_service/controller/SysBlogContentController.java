@@ -39,15 +39,23 @@ public class SysBlogContentController {
             if(byId==null){
                 return R.error().message("文章ID错误");
             }else {
-                return R.ok().data("data",byId);
+                return R.ok().data(byId);
             }
         }
     }
+
+
     @ApiOperation(value = "添加博客内容")
     @PostMapping("/content")
     public R addContent(@RequestBody SysBlogContent content){
         boolean save = blogContentService.save(content);
         return R.booleanRespone(save);
+    }
+
+    @ApiOperation(value = "修改博客内容")
+    @PutMapping("/content")
+    public R updateContent(@RequestBody SysBlogContent content){
+        return blogContentService.updateContent(content);
     }
 }
 

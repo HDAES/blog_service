@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -74,6 +76,10 @@ public class SysUserGroupServiceImpl extends ServiceImpl<SysUserGroupMapper, Sys
         String[] menusArray = null;
         menusArray = group.getMenus().split(",");
         List<SysMenus> sysMenus = menusMapper.selectBatchIds(Arrays.asList(menusArray));
-        return R.ok().data("list",sysMenus).data("name",group.getGName()).data("id",group.getId());
+        Map<String,Object> dataMap = new HashMap<>();
+        dataMap.put("list",sysMenus);
+        dataMap.put("name",group.getGName());
+        dataMap.put("id",group.getId());
+        return R.ok().data(dataMap);
     }
 }

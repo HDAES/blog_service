@@ -43,7 +43,7 @@ public class SysMenusServiceImpl extends ServiceImpl<SysMenusMapper, SysMenus> i
         System.out.println(menu.getId());
         String id = menu.getId();
         if(insert>0){
-            return R.ok().message("添加成功！").data("id",id);
+            return R.ok().message("添加成功！").data(id);
         }else {
             return R.error().message("添加失败");
         }
@@ -67,7 +67,7 @@ public class SysMenusServiceImpl extends ServiceImpl<SysMenusMapper, SysMenus> i
             menusWrapper.select("id","m_id","name","url","icon","sort");
             menusWrapper.orderByAsc("sort");
             List<Map<String, Object>> maps = menusService.listMaps(menusWrapper);
-            return R.ok().message("修改成功").data("list",maps);
+            return R.ok().message("修改成功").data(maps);
         }else {
             return R.error().message("更新失败");
         }

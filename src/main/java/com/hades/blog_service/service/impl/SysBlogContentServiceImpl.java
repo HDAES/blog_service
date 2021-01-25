@@ -4,7 +4,11 @@ import com.hades.blog_service.entity.SysBlogContent;
 import com.hades.blog_service.mapper.SysBlogContentMapper;
 import com.hades.blog_service.service.SysBlogContentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.hades.blog_service.utils.R;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -17,4 +21,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class SysBlogContentServiceImpl extends ServiceImpl<SysBlogContentMapper, SysBlogContent> implements SysBlogContentService {
 
+    @Resource
+    SysBlogContentMapper blogContentMapper;
+
+    @Override
+    public R updateContent(SysBlogContent content) {
+        if(content.getId()==null){
+            return R.error().message("ID不能为空");
+        }else {
+            int i = blogContentMapper.updateById(content);
+            return R.intRespone(i);
+        }
+    }
 }

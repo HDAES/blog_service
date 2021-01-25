@@ -1,5 +1,6 @@
 package com.hades.blog_service.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hades.blog_service.entity.SysBlogDetails;
 import com.hades.blog_service.mapper.SysBlogDetailsMapper;
 import com.hades.blog_service.service.SysBlogDetailsService;
@@ -27,7 +28,7 @@ public class SysBlogDetailsServiceImpl extends ServiceImpl<SysBlogDetailsMapper,
     @Override
     public R selectDetails() {
         List<SysBlogDetails> sysBlogDetails = blogDetailsMapper.selectDetails();
-        return R.ok().data("list",sysBlogDetails);
+        return R.ok().data(sysBlogDetails);
     }
 
     @Override
@@ -43,6 +44,13 @@ public class SysBlogDetailsServiceImpl extends ServiceImpl<SysBlogDetailsMapper,
         }
         int i = blogDetailsMapper.updateById(details);
         return R.intRespone(i);
+    }
+
+    @Override
+    public List<SysBlogDetails> selectById(Long id) {
+        List<SysBlogDetails> details = blogDetailsMapper.selectDetailsById(id);
+
+        return details;
     }
 
 }

@@ -29,7 +29,7 @@ public class SysUserController {
     @GetMapping("/getUserList")
     public R getUserList(){
 
-        return R.ok().data("list",userService.listJoinGroup());
+        return R.ok().data(userService.listJoinGroup());
     }
 
 

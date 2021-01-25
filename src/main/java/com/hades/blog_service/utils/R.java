@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,7 +27,7 @@ public class R {
     private String message;
 
     @ApiModelProperty(value = "返回数据")
-    private Map<String, Object> data = new HashMap<String, Object>();
+    private Object data ;
 
     private R(){}
 
@@ -61,15 +62,12 @@ public class R {
         return this;
     }
 
-    public R data(String key, Object value){
-        this.data.put(key,value);
-        return this;
-    }
 
-    public R data(Map<String, Object> data){
+    public R data(Object data){
         this.setData(data);
         return this;
     }
+
 
     public static R intRespone(int i){
         if(i>0){

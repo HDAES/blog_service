@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -64,8 +65,13 @@ public class LoginController {
 
             List<SysUserGroup> groups = userGroupService.list(userGroupWrapper);
 
+            Map<String,Object> dataMap = new HashMap<>();
+            dataMap.put("user",user);
+            dataMap.put("menus",maps);
+            dataMap.put("groups",groups);
+
             //获取用户组 
-            return R.ok().message("登录成功").data("user",user).data("menus",maps).data("groups",groups);
+            return R.ok().message("登录成功").data(dataMap);
         }else {
             return R.error().message("账号或者密码错误");
         }
