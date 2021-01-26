@@ -16,7 +16,7 @@ public class UploadController {
     @PostMapping("oss")
     public R uploadOss(MultipartFile file){
         String url = UploadFileOss.uploadFileAvatar(file);
-        return R.ok().data(url);
+        return R.ok().data("url",url);
     }
 
 }

@@ -29,6 +29,8 @@ public class R {
     @ApiModelProperty(value = "返回数据")
     private Object data ;
 
+
+
     private R(){}
 
     public static R ok(){
@@ -68,6 +70,12 @@ public class R {
         return this;
     }
 
+    public R data(String key, Object value){
+        Map<String,Object> map = new HashMap<>();
+        map.put(key,value);
+        this.setData(map);
+        return this;
+    }
 
     public static R intRespone(int i){
         if(i>0){
