@@ -54,4 +54,12 @@ public class HadesController {
         dataMap.put("saying",list.get(0));
         return R.ok().data(dataMap);
     }
+
+    @ApiOperation(value = "获取名言")
+    @GetMapping("/saying")
+    public R saying(){
+        List<SysBlogSaying> list = blogSayingService.list();
+        return R.ok().data(list);
+
+    }
 }
