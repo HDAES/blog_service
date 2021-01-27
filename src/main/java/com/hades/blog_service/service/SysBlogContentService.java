@@ -15,4 +15,6 @@ import com.hades.blog_service.utils.R;
 public interface SysBlogContentService extends IService<SysBlogContent> {
 
     R updateContent(SysBlogContent content);
+
+    R getHotArticel();
 }

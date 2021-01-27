@@ -38,7 +38,7 @@ public class SysBlogDetailsServiceImpl extends ServiceImpl<SysBlogDetailsMapper,
     }
 
     @Override
-    public R updateDetails(SysBlogDetails details) {
+    public R updateDetail(SysBlogDetails details) {
         if(details.getId()==null){
             return  R.error().message("id不能为空");
         }
@@ -49,8 +49,13 @@ public class SysBlogDetailsServiceImpl extends ServiceImpl<SysBlogDetailsMapper,
     @Override
     public List<SysBlogDetails> selectById(Long id) {
         List<SysBlogDetails> details = blogDetailsMapper.selectDetailsById(id);
-
         return details;
+    }
+
+    @Override
+    public R getArticleList() {
+        List<SysBlogDetails> sysBlogDetails = blogDetailsMapper.selectDetails();
+        return R.ok().data(sysBlogDetails);
     }
 
 }

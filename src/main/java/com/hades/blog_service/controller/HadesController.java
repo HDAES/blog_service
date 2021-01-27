@@ -1,5 +1,6 @@
 package com.hades.blog_service.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hades.blog_service.entity.SysBlogDetails;
 import com.hades.blog_service.entity.SysBlogSaying;
 import com.hades.blog_service.entity.SysBlogSort;
@@ -37,6 +38,9 @@ public class HadesController {
     @Autowired
     SysBlogSayingServiceImpl blogSayingService;
 
+    @Autowired
+    SysBlogContentServiceImpl blogContentService;
+
     @ApiOperation(value = "获取分类")
     @GetMapping("/section")
     public R section(){
@@ -60,6 +64,18 @@ public class HadesController {
     public R saying(){
         List<SysBlogSaying> list = blogSayingService.list();
         return R.ok().data(list);
-
     }
+
+    @ApiOperation(value = "热门文章")
+    @GetMapping("/hotArticle")
+    public R hotArticle(){
+      return blogContentService.getHotArticel();
+    }
+
+    @ApiOperation(value = "文章列表")
+    @GetMapping("/articleList")
+    public R articleList(){
+        return  blogDetailsService.getArticleList();
+    }
+
 }

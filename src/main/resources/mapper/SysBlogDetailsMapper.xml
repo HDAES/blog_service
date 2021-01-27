@@ -10,6 +10,8 @@
 				sys_blog_details
 				JOIN sys_blog_tags ON sys_blog_details.t_id = sys_blog_tags.id
 				JOIN sys_blog_sort ON sys_blog_details.s_id = sys_blog_sort.id
+				ORDER BY order_in DESC
+
     </select>
 	<select id="selectDetailsById" resultType="com.hades.blog_service.entity.SysBlogDetails">
         SELECT

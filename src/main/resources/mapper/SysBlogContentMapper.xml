@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hades.blog_service.mapper.SysBlogContentMapper">
+    <select id="hotArticel" resultType="com.hades.blog_service.entity.vo.HotArticel">
+        SELECT
+            sys_blog_details.title,
+            sys_blog_content.like_count,
+            sys_blog_content.read_count,
+            sys_blog_content.id
+            FROM
+                sys_blog_content
+                JOIN sys_blog_details ON sys_blog_details.id = sys_blog_content.id
+                ORDER BY read_count DESC
+    </select>
+</mapper>

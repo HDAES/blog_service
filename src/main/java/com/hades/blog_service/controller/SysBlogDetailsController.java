@@ -41,7 +41,7 @@ public class SysBlogDetailsController {
     @ApiOperation(value = "修改详情")
     @PutMapping("/details")
     public R updateDetails(@RequestBody SysBlogDetails details){
-        return blogDetailsService.updateDetails(details);
+        return blogDetailsService.updateDetail(details);
     }
 
     @ApiOperation(value = "删除详情")

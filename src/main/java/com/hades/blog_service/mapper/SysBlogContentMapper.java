@@ -2,6 +2,9 @@ package com.hades.blog_service.mapper;
 
 import com.hades.blog_service.entity.SysBlogContent;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.hades.blog_service.entity.vo.HotArticel;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface SysBlogContentMapper extends BaseMapper<SysBlogContent> {
 
+    List<HotArticel> hotArticel();
 }

@@ -20,8 +20,11 @@ public interface SysBlogDetailsService extends IService<SysBlogDetails> {
 
     R addDetails(SysBlogDetails details);
 
-    R updateDetails(SysBlogDetails details);
-
+    R updateDetail(SysBlogDetails details);
 
     List<SysBlogDetails> selectById(Long id);
+
+    R getArticleList();
+
+
 }
