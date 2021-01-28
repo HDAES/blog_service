@@ -4,10 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hades.blog_service.entity.SysBlogDetails;
 import com.hades.blog_service.entity.SysBlogSaying;
 import com.hades.blog_service.entity.SysBlogSort;
-import com.hades.blog_service.service.impl.SysBlogContentServiceImpl;
-import com.hades.blog_service.service.impl.SysBlogDetailsServiceImpl;
-import com.hades.blog_service.service.impl.SysBlogSayingServiceImpl;
-import com.hades.blog_service.service.impl.SysBlogSortServiceImpl;
+import com.hades.blog_service.service.impl.*;
 import com.hades.blog_service.utils.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -36,6 +33,9 @@ public class HadesController {
     SysBlogDetailsServiceImpl blogDetailsService;
 
     @Autowired
+    SysBlogTagsServiceImpl blogTagsService;
+
+    @Autowired
     SysBlogSayingServiceImpl blogSayingService;
 
     @Autowired
@@ -51,12 +51,12 @@ public class HadesController {
     @ApiOperation(value = "获取分类内容")
     @GetMapping("/sectionData/{id}")
     public R sectionData(@ApiParam(name = "id", value = "详情ID") @PathVariable Long id ){
-        List<SysBlogDetails>  detailsList = blogDetailsService.selectById(id);
-        List<SysBlogSaying> list = blogSayingService.list();
-        Map<String,Object> dataMap = new HashMap<>();
-        dataMap.put("articleList",detailsList);
-        dataMap.put("saying",list.get(0));
-        return R.ok().data(dataMap);
+        SysBlogSort sort = blogSortService.getById(id);
+        List<SysBlogDetails> detailsList = blogDetailsService.selectById(id);
+        Map<String,Object> map = new HashMap<>();
+        map.put("info",sort);
+        map.put("list",detailsList);
+        return R.ok().data(map);
     }
 
     @ApiOperation(value = "获取名言")
