@@ -1,10 +1,12 @@
 package com.hades.blog_service.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.hades.blog_service.entity.SysBlogContent;
 import com.hades.blog_service.entity.SysBlogDetails;
 import com.hades.blog_service.entity.SysBlogSaying;
 import com.hades.blog_service.entity.SysBlogSort;
 import com.hades.blog_service.service.impl.*;
+import com.hades.blog_service.utils.MarkdownUtils;
 import com.hades.blog_service.utils.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -76,6 +78,16 @@ public class HadesController {
     @GetMapping("/articleList")
     public R articleList(){
         return  blogDetailsService.getArticleList();
+    }
+
+    @ApiOperation(value = "文章类容")
+    @GetMapping("/article/{id}")
+    public R getArticle(@ApiParam(name = "id", value = "文章ID") @PathVariable Long id ){
+        SysBlogContent byId = blogContentService.getById(id);
+        Map<String,Object> map = new HashMap<>();
+        map.put("data",byId);
+        map.put("html", MarkdownUtils.markdownToHtmlExtensions(byId.getContent()));
+        return R.ok().data(map);
     }
 
 }
