@@ -84,10 +84,10 @@ public class HadesController {
     @GetMapping("/article/{id}")
     public R getArticle(@ApiParam(name = "id", value = "文章ID") @PathVariable Long id ){
         SysBlogContent byId = blogContentService.getById(id);
-        Map<String,Object> map = new HashMap<>();
-        map.put("data",byId);
-        map.put("html", MarkdownUtils.markdownToHtmlExtensions(byId.getContent()));
-        return R.ok().data(map);
+//        Map<String,Object> map = new HashMap<>();
+//        map.put("data",byId);
+//        map.put("html", MarkdownUtils.markdownToHtmlExtensions(byId.getContent()));
+        return R.ok().data(byId);
     }
 
 }
