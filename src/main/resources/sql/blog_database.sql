@@ -11,7 +11,7 @@
  Target Server Version : 80021
  File Encoding         : 65001
 
- Date: 27/01/2021 18:29:05
+ Date: 02/02/2021 16:29:28
 */
 
 SET NAMES utf8mb4;
@@ -129,12 +129,42 @@ CREATE TABLE `sys_blog_tags`  (
 -- ----------------------------
 -- Records of sys_blog_tags
 -- ----------------------------
-INSERT INTO `sys_blog_tags` VALUES ('1346385377467678722', '1346353547930595330', 'Vue', 'vue', 1);
-INSERT INTO `sys_blog_tags` VALUES ('1346393316765016065', '1346353547930595330', 'React', 'react', 1);
 INSERT INTO `sys_blog_tags` VALUES ('1346657358586925057', '1346353547930595330', 'React', 'react', 0);
 INSERT INTO `sys_blog_tags` VALUES ('1350713703477940225', '1346353547930595330', 'Vue', 'vue', 0);
 INSERT INTO `sys_blog_tags` VALUES ('1354066876603240450', '1346353547930595330', 'Js', 'js', 0);
 INSERT INTO `sys_blog_tags` VALUES ('1354067333400694786', '1346353547930595330', 'node', 'node', 0);
+
+-- ----------------------------
+-- Table structure for sys_hengqifeng_api
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_hengqifeng_api`;
+CREATE TABLE `sys_hengqifeng_api`  (
+  `id` int(0) NOT NULL COMMENT '接口ID',
+  `url` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '接口地址',
+  `params` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '请求参数',
+  `method` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '请求方式',
+  `des` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_hengqifeng_api
+-- ----------------------------
+INSERT INTO `sys_hengqifeng_api` VALUES (1, '/hades/files/web/yidu_config.json', NULL, NULL, '配置文件');
+INSERT INTO `sys_hengqifeng_api` VALUES (2, '/hades/open/launch/current', NULL, NULL, '开屏接口');
+INSERT INTO `sys_hengqifeng_api` VALUES (3, '/hades/api/today/festival', NULL, NULL, '节假日接口');
+INSERT INTO `sys_hengqifeng_api` VALUES (4, '/hades/api/novel/index/rotation', NULL, NULL, '首页轮播');
+INSERT INTO `sys_hengqifeng_api` VALUES (5, '/hades/api/report/category', NULL, NULL, '举报详情');
+INSERT INTO `sys_hengqifeng_api` VALUES (6, '/hades/user/recharge/package/get', NULL, NULL, '充值套餐');
+INSERT INTO `sys_hengqifeng_api` VALUES (7, '/hades/api/index/popup', NULL, NULL, '首页弹窗');
+INSERT INTO `sys_hengqifeng_api` VALUES (8, '/hades/api/recharge/banner/new', NULL, NULL, '充值轮播');
+INSERT INTO `sys_hengqifeng_api` VALUES (9, '/hades/api/novel/index/cartoon', NULL, NULL, '首页推荐');
+INSERT INTO `sys_hengqifeng_api` VALUES (10, '/hades/api/novel/hot/category', NULL, NULL, '首页分类');
+INSERT INTO `sys_hengqifeng_api` VALUES (11, '/hades/api/index/user/bookshelf', NULL, NULL, '书架内置书');
+INSERT INTO `sys_hengqifeng_api` VALUES (12, '/hades/api/index/book/info?workId=10253', NULL, NULL, '书籍详情');
+INSERT INTO `sys_hengqifeng_api` VALUES (13, '/hades/api/novel/index/user/like', NULL, NULL, '详情页猜你喜欢');
+INSERT INTO `sys_hengqifeng_api` VALUES (14, '/hades/api/novel/chapter/detail?workId=10253&chapterId=3152719', NULL, NULL, '书籍内容');
+INSERT INTO `sys_hengqifeng_api` VALUES (15, '/hades/api/novel/book/chapter?workId=10253&size=20&page=1&type=0', NULL, NULL, '书籍目录');
 
 -- ----------------------------
 -- Table structure for sys_menus
@@ -162,7 +192,7 @@ INSERT INTO `sys_menus` VALUES ('1334509886049976322', '0', 'ui', '/ui', '/icon-
 INSERT INTO `sys_menus` VALUES ('1334510029532921858', '1334509886049976322', 'Button', '/ui/button', '/icon-ui', 0, 0, 0, '2020-12-03 22:49:20', '2020-12-03 22:49:20');
 INSERT INTO `sys_menus` VALUES ('1334510221418135554', '0', '权限管理', '/auth', '/icon-auth', 2, 0, 0, '2020-12-03 22:50:05', '2020-12-03 22:50:05');
 INSERT INTO `sys_menus` VALUES ('1334512533704331266', '1334509886049976322', '1313123', '/ui/dilog', 'string', 0, 0, 1, '2020-12-03 22:59:17', '2020-12-04 12:08:18');
-INSERT INTO `sys_menus` VALUES ('1334687759586869250', '0', '日志', '/logs', 'string', 4, 0, 0, '2020-12-04 10:35:34', '2020-12-04 10:35:34');
+INSERT INTO `sys_menus` VALUES ('1334687759586869250', '0', '日志', '/logs', 'string', 10, 0, 0, '2020-12-04 10:35:34', '2020-12-04 10:35:34');
 INSERT INTO `sys_menus` VALUES ('1337939648898404354', '1334510221418135554', '菜单', '/auth/menus', '/icon', 2, 0, 0, '2020-12-13 09:57:25', '2020-12-13 21:54:47');
 INSERT INTO `sys_menus` VALUES ('1337980579520512001', '1334509886049976322', '轮播图', '/swiper', 'swiper', 0, 0, 1, '2020-12-13 12:40:03', '2020-12-16 11:13:09');
 INSERT INTO `sys_menus` VALUES ('1338044026334507010', '0', 'hades23123', '/hades', '1232', 10, 0, 1, '2020-12-13 16:52:10', '2020-12-13 18:08:31');
@@ -190,6 +220,8 @@ INSERT INTO `sys_menus` VALUES ('1346029084877889538', '1346027299119407105', '�
 INSERT INTO `sys_menus` VALUES ('1346357882127216641', '1346027299119407105', '标签', '/blog/tags', NULL, 0, 0, 0, '2021-01-05 15:28:28', '2021-01-05 15:28:50');
 INSERT INTO `sys_menus` VALUES ('1346668818037735425', '1346027299119407105', '博客详情', '/blog/details', NULL, 0, 0, 0, '2021-01-06 12:04:01', '2021-01-06 12:04:01');
 INSERT INTO `sys_menus` VALUES ('1354058827566112770', '1346027299119407105', '名言', '/blog/saying', NULL, 0, 0, 0, '2021-01-26 21:29:16', '2021-01-26 21:29:16');
+INSERT INTO `sys_menus` VALUES ('1356485672751083521', '0', '测试', '/test', NULL, 4, 0, 0, '2021-02-02 14:12:41', '2021-02-02 14:12:41');
+INSERT INTO `sys_menus` VALUES ('1356493077266313218', '1356485672751083521', '接口', '/test/api', NULL, 0, 0, 0, '2021-02-02 14:42:07', '2021-02-02 14:42:07');
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -232,7 +264,7 @@ CREATE TABLE `sys_user_group`  (
 -- ----------------------------
 -- Records of sys_user_group
 -- ----------------------------
-INSERT INTO `sys_user_group` VALUES ('1334742747201794049', '超级管理员', '1334687759586869250,1334509795264266242,1334510221418135554,1339045997518311425,1338120069035687937,1337939648898404354,1334509886049976322,1334510029532921858,1339763191164289026,1339824630574989314,1340134770171797506,1340140297954091009,1340218434980126722,1340223597518233601,1340669440910139394,1340669660444205057,1340309220111392770,1340322176823959553,1340327928586280962,1340334276615053314,1340307458734399490,1346027299119407105,1346029084877889538,1346357882127216641,1346668818037735425,1354058827566112770', '2020-12-04 14:14:04', '2021-01-26 21:35:41');
+INSERT INTO `sys_user_group` VALUES ('1334742747201794049', '超级管理员', '1334687759586869250,1334509795264266242,1334510221418135554,1339045997518311425,1338120069035687937,1337939648898404354,1334509886049976322,1334510029532921858,1339763191164289026,1339824630574989314,1340134770171797506,1340140297954091009,1340218434980126722,1340223597518233601,1340669440910139394,1340669660444205057,1340309220111392770,1340322176823959553,1340327928586280962,1340334276615053314,1340307458734399490,1346027299119407105,1346029084877889538,1346357882127216641,1346668818037735425,1354058827566112770,1356485672751083521,1356493077266313218', '2020-12-04 14:14:04', '2021-02-02 14:42:23');
 INSERT INTO `sys_user_group` VALUES ('1339025188347236354', '游客', '1334509795264266242', '2020-12-16 09:50:57', '2020-12-16 09:50:57');
 
 SET FOREIGN_KEY_CHECKS = 1;
