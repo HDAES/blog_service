@@ -24,8 +24,7 @@ public class SysHengqifengApi implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "接口ID")
-    @TableId(value = "id", type = IdType.ID_WORKER_STR)
-    private int id;
+    private Integer id;
 
     @ApiModelProperty(value = "接口地址")
     private String url;

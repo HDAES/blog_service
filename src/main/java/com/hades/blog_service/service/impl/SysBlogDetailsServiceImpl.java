@@ -58,4 +58,10 @@ public class SysBlogDetailsServiceImpl extends ServiceImpl<SysBlogDetailsMapper,
         return R.ok().data(sysBlogDetails);
     }
 
+    @Override
+    public R selectByKey(String key) {
+        List<SysBlogDetails> details = blogDetailsMapper.selectDetailsBykey(key);
+        return R.ok().data(details);
+    }
+
 }

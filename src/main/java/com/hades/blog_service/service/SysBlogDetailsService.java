@@ -27,4 +27,5 @@ public interface SysBlogDetailsService extends IService<SysBlogDetails> {
     R getArticleList();
 
 
+    R selectByKey(String key);
 }

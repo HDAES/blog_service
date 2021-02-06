@@ -1,5 +1,6 @@
 package com.hades.blog_service.controller;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hades.blog_service.entity.SysBlogContent;
 import com.hades.blog_service.entity.SysBlogDetails;
@@ -90,4 +91,10 @@ public class HadesController {
         return R.ok().data(byId);
     }
 
+    @ApiOperation(value = "搜索")
+    @GetMapping("/search/{key}")
+    public R getSearch(@ApiParam(name = "key", value = "关键字") @PathVariable String key){
+        String newKey = '%' + key + '%';
+        return  blogDetailsService.selectByKey(newKey);
+    }
 }

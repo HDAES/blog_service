@@ -24,4 +24,20 @@
 				JOIN sys_blog_sort ON sys_blog_details.s_id = sys_blog_sort.id
 				WHERE sys_blog_details.s_id =  #{id}
     </select>
+	<select id="selectDetailsBykey" resultType="com.hades.blog_service.entity.SysBlogDetails">
+        SELECT
+			bd.*,
+			bt.t_name,
+			bs.`name`
+		FROM
+			sys_blog_details bd
+			JOIN sys_blog_tags bt ON bd.t_id = bt.id
+			JOIN sys_blog_sort bs ON bd.s_id = bs.id
+		WHERE
+			bd.title LIKE  #{key}
+			OR bd.des LIKE #{key}
+			OR bt.t_name LIKE #{key}
+			OR bs.`name` LIKE #{key}
+    </select>
+
 </mapper>

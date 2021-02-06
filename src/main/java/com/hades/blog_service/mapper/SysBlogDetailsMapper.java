@@ -20,4 +20,6 @@ public interface SysBlogDetailsMapper extends BaseMapper<SysBlogDetails> {
     List<SysBlogDetails> selectDetails();
 
     List<SysBlogDetails> selectDetailsById(long id);
+
+    List<SysBlogDetails> selectDetailsBykey(String key);
 }
